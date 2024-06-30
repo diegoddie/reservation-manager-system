@@ -10,7 +10,7 @@ This project is a code challenge for Tot, which involved a reservation system fo
 - [API Endpoints](#api-endpoints)
 - [Constants](#constants)
 
-## Features & Rules
+## Features and Rules
 - **User Management**: Create and retrieve users.
 - **Reservation Management**: Create and retrieve reservations within a specific date range or for a specific user.
 
