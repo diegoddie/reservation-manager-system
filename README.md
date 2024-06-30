@@ -5,6 +5,7 @@ This project is a code challenge for Tot, which involved a reservation system fo
 ## Table of Contents
 - [Features and Rules](#features-and-rules)
 - [Technologies Used](#technologies-used)
+- [Models](#models)
 - [Deployment](#deployment)
 - [Running Locally](#running-locally)
 - [API Endpoints](#api-endpoints)
@@ -27,6 +28,27 @@ Restaurant's constants and rules are defined in a `constants.ts` file (in the li
 - **Backend**: Next.js, TypeScript, NeonDB (PostgreSQL), Prisma
 - **Frontend**: React, TailwindCSS, DaisyUI
 - **Deployment**: Vercel
+
+## Models
+```prisma
+model User {
+  id            Int          @id @default(autoincrement())
+  name          String
+  email         String       @unique
+  reservations  Reservation[]
+}
+
+model Reservation {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  user      User      @relation(fields: [userId], references: [id])
+  date      DateTime
+  people    Int
+  table     Int
+
+  @@unique([date, table])
+}
+```
 
 ## Deployment
 The project is deployed on Vercel and can be accessed [here](https://reservation-manager-system.vercel.app).
